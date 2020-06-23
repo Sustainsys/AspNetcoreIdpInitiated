@@ -4,23 +4,37 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Start Idp initiated log in at <a href="https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4">https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4</a>. 
-    Enter /Home/Target as relaystate to go to that after login.</p>
+    <p>
+        Start Idp initiated log in at
+        <a href="https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4">
+            https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4
+        </a>.
+        Enter /Home/Target as relaystate to go to that after login.
+    </p>
+    <p>
+        To use a custom relay state mechanism, start idp initated login at
+        <a href="https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a5">
+            https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a5
+        </a>.
+        Do not enter any relaystate.
+    </p>
 </div>
 
-@if(User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
 {
     <table>
         <thead>
             <tr>
-                <th>Claim</th><th>Value</th>
+                <th>Claim</th>
+                <th>Value</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var c in User.Claims)
+            @foreach (var c in User.Claims)
             {
                 <tr>
-                    <td>@c.Type</td><td>@c.Value</td>
+                    <td>@c.Type</td>
+                    <td>@c.Value</td>
                 </tr>
             }
         </tbody>
