@@ -40,7 +40,8 @@ namespace AspNetCoreIdpInitiated
                         opt.SPOptions)
                     {
                         LoadMetadata = true,
-                        AllowUnsolicitedAuthnResponse = true
+                        AllowUnsolicitedAuthnResponse = true,
+                        RelayStateUsedAsReturnUrl = true
                     });
                 });
         }

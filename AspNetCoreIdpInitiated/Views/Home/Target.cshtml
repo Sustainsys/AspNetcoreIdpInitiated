@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Target page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Idp Initiated target</h1>
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Claim</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in User.Claims)
+            {
+                <tr>
+                    <td>@c.Type</td>
+                    <td>@c.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Saml2/Logout">Sign out</a>
+}
