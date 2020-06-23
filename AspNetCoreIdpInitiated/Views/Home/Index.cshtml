@@ -4,5 +4,26 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>Start Idp initiated log in at <a href="https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4">https://stubidp.sustainsys.com/d661ec76-b217-4f86-9149-50a5e0a651a4</a></p>
 </div>
+
+@if(User.Identity.IsAuthenticated)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Claim</th><th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var c in User.Claims)
+            {
+                <tr>
+                    <td>@c.Type</td><td>@c.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Saml2/Logout">Sign out</a>
+}
