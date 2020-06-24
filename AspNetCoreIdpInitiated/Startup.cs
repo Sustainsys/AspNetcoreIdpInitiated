@@ -73,7 +73,17 @@ namespace AspNetCoreIdpInitiated
 
             if(!string.IsNullOrEmpty(target))
             {
-                commandResult.Location = new Uri(target, UriKind.Relative);
+                // Avoid an open redirect. Note that on a shared host with multiple applications running
+                // in different subdirectories this check is not enough. 
+                var targetUri = new Uri(target, UriKind.Relative);
+
+                // A protocol relative url is relative, but can still redirect to another host. Block it.
+                if(target.StartsWith("//"))
+                {
+                    throw new InvalidOperationException("Protocol relative URLs are not allowed.");
+                }
+
+                commandResult.Location = targetUri;
             }
         }
 
